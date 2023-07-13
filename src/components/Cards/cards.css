@@ -1,0 +1,69 @@
+.cards {
+  position: relative;
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 35px 20px;
+  height: 150px;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s;
+  justify-content: space-between;
+}
+.cards::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background-image: url('/pokeball.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 150px;
+}
+.cards:hover {
+  transform: scale(1.1);
+}
+.pokeId {
+  font-size: 30px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.cards__img {
+  height: 140px;
+  width: 120px;
+  position: relative;
+  z-index: 10;
+}
+@media (min-width: 768px) {
+  .cards__img {
+    height: 130px;
+    width: 130px;
+    transition: transform 0.2s;
+  }
+}
+/* .cards__types > div {
+  display: flex;
+  align-items: center;
+  padding: 4px 5px;
+} */
+
+.name {
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: capitalize;
+  color: #fff;
+}
+.cards__types {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+.cards__types img {
+  width: 10px;
+  height: 10px;
+}

@@ -1,0 +1,26 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--bg2);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  height: 70px;
+  z-index: 100;
+}
+
+.pokemon {
+  height: 90px;
+  width: 110px;
+}
+.henry {
+  height: 40px;
+  width: 40px;
+}
+.footer__text {
+  text-align: center;
+}

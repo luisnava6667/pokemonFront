@@ -1,0 +1,33 @@
+.paginado {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 30px;
+}
+@media (max-width: 768px) {
+  .paginado {
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+    gap: 10px;
+  }
+}
+.paginado__number {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 19px;
+  font-weight: bold;
+}
+.paginado__number:hover {
+  background-color: #000;
+  color: #fff;
+}

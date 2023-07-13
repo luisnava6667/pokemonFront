@@ -1,0 +1,96 @@
+.createPage {
+  background-color: var(--bg);
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.div__form {
+  padding: 90px 0;
+  display: grid;
+  text-align: center;
+}
+.div__form > h2{
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;1
+}
+.div__form > form{
+  margin: 0px 40px;
+  display: grid;
+  font-size: 20px;
+  color: #fff;
+  gap: 20px;
+  padding: 30px;
+}
+.div__button{
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+  gap: 50px;
+}
+.div__button > button{
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.div__button > button:nth-child(1){
+  background-color: #1DA1F2;
+  transition: all 0.5s ease;
+}
+.div__button > button:nth-child(1):hover{
+  background-color: #fff;
+  color: #1DA1F2;
+}
+.div__button > button:nth-child(2){
+  background-color: #fff;
+  color: #1DA1F2;
+  transition: all 0.5s ease;
+}
+.div__button > button:nth-child(2):hover{
+  background-color: #1DA1F2;
+  color: #fff;
+}
+.type__create{
+    display: grid;
+    gap: 20px;
+  }
+.check__types{
+  display: grid;
+  justify-items: center;
+ 
+}
+
+.div__check{
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.div__check > img{
+  width: 30px;
+  height: 30px;
+}
+.check__{
+  display: flex;
+  gap: 10px;
+}
+  /* .inputs__div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+    gap: 20px;
+   
+  } */
+  /* .check__types{
+    display: grid;
+    
+  } */
