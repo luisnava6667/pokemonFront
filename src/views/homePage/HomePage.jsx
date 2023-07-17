@@ -33,8 +33,8 @@ export const HomePage = () => {
       {loading ? (
         <Loader />
       ) : (
-        <>
-          <h2 className='homePage__title'>Pokedex</h2>
+        <div>
+          <h2>Pokedex</h2>
           <Filters setCurrentPage={setCurrentPage} />
           <Paginado
             charactersPerPage={pokemonsPerPage}
@@ -46,7 +46,7 @@ export const HomePage = () => {
               <Cards key={i} pokemon={pokemon} />
             ))}
           </div>
-        </>
+        </div>
       )}
     </div>
   )

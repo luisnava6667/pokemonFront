@@ -1,23 +1,15 @@
 .detailPage {
-  background-color: var(--bg);
+
   width: 100%;
   align-items: center;
 }
 .detailPage__div {
   display: grid;
-  padding: 95px 25px;
-  margin: 50px auto;
   align-items: center;
   justify-items: center;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   color: #fff;
-}
-.detailPage__div > h1 {
-  margin: 0;
-  font-size: 50px;
-  text-transform: uppercase;
-  padding-bottom: 10px;
 }
 .div__container {
   display: grid;

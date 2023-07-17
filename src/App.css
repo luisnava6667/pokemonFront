@@ -1,6 +1,7 @@
 .App {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  background-color: var(--bg);
 }
 
 .type {
@@ -11,7 +12,7 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-.bg{
+.bg {
   border-radius: 20px;
   padding: 10px;
   background: linear-gradient(
@@ -85,4 +86,33 @@
 }
 .colorSteel {
   background-color: #b7b9d0;
+}
+
+.check__types {
+  display: grid;
+  justify-items: center;
+  color: white;
+}
+
+.label__check {
+  display: grid;
+  align-items: center;
+  gap: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-content: center;
+}
+.label__check > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.inputsCheck {
+  display: none;
+}
+//si el input esta checkeado se pone el color de fondo
+input:checked + .label__check > img {
+  background-color: #f57d31 !important;
 }

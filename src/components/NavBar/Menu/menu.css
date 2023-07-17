@@ -1,0 +1,32 @@
+.show-0 {
+  transition: transform 0.5s ease;
+  transform: translateX(0);
+  transition-duration: 700ms;
+}
+.show-125 {
+  transform: translateX(-125%);
+  transition-duration: 100ms;
+}
+.menu__Links {
+  display: flex;
+}
+@media (min-width: 640px) {
+  .menu__Links {
+    display: none;
+  }
+}
+.links{
+    padding: 0 10px;
+}
+.links > a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.links > a:hover {
+   color: #F7522C;
+}

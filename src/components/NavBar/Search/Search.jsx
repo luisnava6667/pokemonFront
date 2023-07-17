@@ -9,7 +9,10 @@ export const Search = () => {
   const handleInputChange = (e) => {
     e.preventDefault()
     setName(e.target.value)
+    console.log('enter')
   }
+  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(getNamePokemons(name))

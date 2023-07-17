@@ -11,8 +11,10 @@ import {
 } from '../../redux/actions'
 import { Select } from './Select/Select'
 import { Type } from '../Type'
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md'
 export const Filters = ({ setCurrentPage }) => {
   const dispatch = useDispatch()
+  const [visible, setVisible] = useState(false)
   const [selectedTypes, setSelectedTypes] = useState([])
 
   const types = useSelector((state) => state.types)
@@ -20,18 +22,21 @@ export const Filters = ({ setCurrentPage }) => {
     dispatch(getAllTypes())
   }, [dispatch])
   useEffect(() => {
-    if (selectedTypes.length === 0) {
-      console.log('entro')
+    if (selectedTypes.length === 0 || selectedTypes.includes('all')) {
       dispatch(filterPokemonsByType('all'))
-    } else if (selectedTypes.includes) {
-      console.log('entro1')
-      dispatch(filterPokemonsByType(selectedTypes))
     } else {
-      console.log('entro2')
-      dispatch(filterPokemonsByType('all'))
+      dispatch(filterPokemonsByType(selectedTypes))
     }
   }, [dispatch, selectedTypes])
   const [orden, setOrden] = useState('')
+  const clearFilters = () => {
+    selectedTypes.length = 0
+    dispatch(filterPokemonsByType('all'))
+    dispatch(filterCreated('all'))
+    dispatch(orderByName('all'))
+    dispatch(orderById('all'))
+    setCurrentPage(1)
+  }
   const handleFilterCreate = (e) => {
     dispatch(filterCreated(e.target.value))
   }
@@ -49,28 +54,52 @@ export const Filters = ({ setCurrentPage }) => {
   }
 
   return (
-    <div className='filters'>
-      <h2>Filters</h2>
-      <div className='filters__total'>
-        {types.map((type) => (
-          <Type
-            key={type.id}
-            name={type.name}
-            selectedTypes={selectedTypes}
-            setSelectedTypes={setSelectedTypes}
+    <div className='filters bg'>
+      <div className='filter'>
+        <h2>Filters</h2>
+        {visible ? (
+          <MdKeyboardArrowUp
+            className='icon'
+            size={30}
+            onClick={() => setVisible(!visible)}
           />
-        ))}
-        <div className='orden'>
-          <Select legend={'Order by Name'} handler={handleFilterByName} />
-          <Select legend={'Order by Id'} handler={handleFilterId} />
-          <Select
-            legend={'Create or API'}
-            value1='create'
-            value2='api'
-            handler={handleFilterCreate}
+        ) : (
+          <MdKeyboardArrowDown
+            className='icon'
+            size={30}
+            onClick={() => setVisible(!visible)}
           />
-        </div>
+        )}
       </div>
+      {visible ? (
+        <div className='filter__div'>
+          <div className='div__filter'>
+            {types.map((type) => (
+              <Type
+                key={type.id}
+                name={type.name}
+                selectedTypes={selectedTypes}
+                setSelectedTypes={setSelectedTypes}
+              />
+            ))}
+          </div>
+          <div className='selects'>
+            <Select legend={'Order by Name'} handler={handleFilterByName} />
+            <Select legend={'Order by Id'} handler={handleFilterId} />
+            <Select
+              legend={'Create or API'}
+              value1='create'
+              value2='api'
+              handler={handleFilterCreate}
+            />
+            <Select legend={'Order by Attack'} handler={handleFilterId} />
+            <Select legend={'Order by Defense'} handler={handleFilterId} />
+            {/* <button className='' onClick={clearFilters}>
+              Clean Filters
+            </button> */}
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }

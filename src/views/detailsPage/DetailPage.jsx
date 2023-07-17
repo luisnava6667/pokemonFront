@@ -24,7 +24,7 @@ export const DetailPage = () => {
         ) : (
           <>
             <div className='detailPage__div'>
-              <h1>{detail.name}</h1>
+              <h2>{detail.name}</h2>
               <div className='div__container'>
                 <img
                   src={detail.image}

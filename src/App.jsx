@@ -14,7 +14,7 @@ function App() {
           <Route path='/pokemon/:id' exact element={<DetailPage />} />
           <Route path='/pokemonCreate' element={<CreatePage />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </BrowserRouter>
   )
