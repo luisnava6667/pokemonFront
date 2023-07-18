@@ -32,18 +32,21 @@ export const DetailPage = () => {
                   className='detail__img bg'
                 />
                 <div className='div__info'>
-                  <h3>Information</h3>
                   <Detail detail={detail} />
                 </div>
               </div>
-              {/* <div className='moves bg'>
+              <div className='moves bg'>
                 <h4>Moves:</h4>
                 <p>{detail.move}</p>
               </div>
               <div className='moves bg'>
                 <h4>Moves:</h4>
-                <p>{detail.move}</p>
-              </div> */}
+                <div className='moves__list'>
+                  {detail.moves.map((move, i) => (
+                    <p key={i}>{move}</p>
+                  ))}
+                </div>
+              </div>
             </div>
           </>
         )}

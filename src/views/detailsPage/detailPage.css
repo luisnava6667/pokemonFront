@@ -1,5 +1,5 @@
 .detailPage {
-
+  padding: 0 40px;
   width: 100%;
   align-items: center;
 }
@@ -41,11 +41,7 @@
   justify-items: center;
   width: 100%;
 }
-.div__info > h3 {
-  margin: 10px 0;
-  font-size: 30px;
-  text-transform: uppercase;
-}
+
 @media (min-width: 1024px) {
   .div__info > h3 {
     margin: 0;
@@ -67,12 +63,18 @@
 .moves {
   text-align: center;
   padding: 15px;
+  width: 100%;
 }
 .moves > h4 {
   font-size: 25px;
 }
 .moves > p {
   font-size: 18px;
+}
+.moves__list {
+  display: flex;
+  padding: 0;
+  margin: 0;
 }
 @media (min-width: 768px) {
 }

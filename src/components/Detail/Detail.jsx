@@ -1,17 +1,20 @@
 import { Bars } from './Bars/Bars'
 import './detail.css'
 export const Detail = ({ detail }) => {
-  const speed = (detail.speed.split('km')[0] / 1.609).toFixed()
-  
   const game = detail.games.join(', ')
   const abilities = detail.abilities.join(', ')
+  const weight = detail.weight / 10 + ' kg'
+  const height = detail.height / 10 + ' Mts'
+  //   1 milla es aproximadamente igual a 1.609 kilómetros.
+  const speed = (detail.speed * 1.609).toFixed(2) + 'km/h'
   return (
     <div className='detail__stats'>
+      <h3>Information</h3>
       <div className='detail__div '>
         <div className='detail__bars bg'>
           <h3>Base Stats</h3>
+          <Bars numero={detail.speed} title={'Speed'} />
           <Bars numero={detail.hp} title={'Hp'} />
-          <Bars numero={speed} title={'Speed'} />
           <Bars numero={detail.special_defense} title={'Special Defense'} />
           <Bars numero={detail.special_attack} title={'Special Attack'} />
           <Bars numero={detail.defense} title={'Defence'} />
@@ -19,9 +22,13 @@ export const Detail = ({ detail }) => {
         </div>
         <div className='detail__more'>
           <div className='detail__info bg'>
-            <h3>Weight: {detail.weight}</h3>
-            <h3>Height: {detail.height}</h3>
-            <h3>Speed: {detail.speed}</h3>
+            <h3>Weight: {weight}</h3>
+            <h3>Height: {height}</h3>
+            <h3>Speed: {speed}</h3>
+          </div>
+          <div className='ability bg'>
+            <h4>Characteristic: </h4>
+            {detail.characteristic}
           </div>
           <div className='info__container bg'>
             <h3>Type: </h3>
@@ -45,7 +52,6 @@ export const Detail = ({ detail }) => {
           </div>
         </div>
       </div>
-      
     </div>
   )
 }
