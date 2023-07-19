@@ -43,9 +43,9 @@ export const NavBar = () => {
             </div>
             <div className='navbar__links'>
               <Link to='/pokemonCreate'>New Pokemon</Link>
-              <Link to='/pokemonCreate'>Type </Link>
-              <Link to='/pokemonCreate'>Abilities</Link>
-              <Link to='/pokemonCreate'>Regions</Link>
+              <Link to='/types'>Type </Link>
+              <Link to='/ability'>Abilities</Link>
+              <Link to='/regions'>Regions</Link>
             </div>
           </div>
           <Menu menuOpen={menuOpen} />

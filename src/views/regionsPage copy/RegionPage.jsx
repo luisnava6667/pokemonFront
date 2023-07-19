@@ -2,22 +2,22 @@ import { getDetail } from '../../redux/actions'
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { Detail, Loader } from '../../components/'
+import { Detail, Loader } from '../../components'
 import './detailPage.css'
-export const DetailPage = () => {
+export const RegionPage = () => {
   const { pathname } = useLocation()
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
   const detail = useSelector((state) => state.detail)
   const id = pathname.split('/')[2]
-  // console.log(moves);
+  const moves = detail.moves.join(', ')
+  console.log(moves);
   useEffect(() => {
     dispatch(getDetail(id))
     setTimeout(() => {
       setLoading(false)
     }, 2000)
   }, [dispatch, id])
-  // const moves = detail.moves.join(', ')
   return (
     <>
       <div className={` detailPage`}>
@@ -44,7 +44,7 @@ export const DetailPage = () => {
               <div className='div__container moves bg'>
                 <h4>Moves:</h4>
                 <div className='moves__list' >
-                    {detail.moves.join(', ')} 
+                    {moves}
                 </div>
               </div>
             </div>
