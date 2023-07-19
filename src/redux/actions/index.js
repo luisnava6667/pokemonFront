@@ -18,6 +18,36 @@ export function getAllTypes() {
     })
   }
 }
+export function getAllAbilities() {
+  return async function (dispatch) {
+    const { data } = await axios.get('http://localhost:3001/api/ability')
+    
+    return dispatch({
+      type: 'GET_ALLABILITIES',
+      payload: data
+    })
+  }
+}
+export function getAllGames() {
+  return async function (dispatch) {
+    const { data } = await axios.get('http://localhost:3001/api/games')
+    
+    return dispatch({
+      type: 'GET_ALLGAMES',
+      payload: data
+    })
+  }
+}
+export function getAllMoves() {
+  return async function (dispatch) {
+    const { data } = await axios.get('http://localhost:3001/api/moves')
+    console.log(data)
+    return dispatch({
+      type: 'GET_ALLMOVES',
+      payload: data
+    })
+  }
+}
 export function getDetail(id) {
   return async function (dispatch) {
     const { data } = await axios.get(`http://localhost:3001/api/pokemons/${id}`)
@@ -64,7 +94,7 @@ export function orderById(payload) {
 export function createPokemons(payload) {
   return async function () {
     const { data } = await axios.post(
-      'http://localhost:3001/api/createPokemons',
+      'http://localhost:3001/api/pokemons',
       payload
     )
     return data

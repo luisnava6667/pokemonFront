@@ -36,16 +36,14 @@ export const DetailPage = () => {
                 <div className='div__info'>
                   <Detail detail={detail} />
                 </div>
-              </div>
-              {/* <div className='moves bg'>
+                {/* <div className='moves bg'>
                 <h4>Moves:</h4>
                 <p>{detail.move}</p>
               </div> */}
-              <div className='div__container moves bg'>
+              </div>
+              <div className=' moves bg'>
                 <h4>Moves:</h4>
-                <div className='moves__list' >
-                    {detail.moves.join(', ')} 
-                </div>
+                <div className='moves__list'>{detail.moves.join(', ')}</div>
               </div>
             </div>
           </>

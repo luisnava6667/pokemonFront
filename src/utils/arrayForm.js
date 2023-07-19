@@ -19,6 +19,15 @@ export const inputForm = [
   },
   {
     id: 3,
+    name: 'description',
+    type: 'text',
+    placeholder: 'Please enter description the Pokemon',
+    label: 'Pokemon Description',
+    value: {},
+    onChange: () => {}
+  },
+  {
+    id: 4,
     name: 'hp',
     type: 'range',
     placeholder: '',
@@ -27,7 +36,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 4,
+    id: 5,
     name: 'attack',
     type: 'range',
     placeholder: '',
@@ -36,7 +45,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 5,
+    id: 6,
     name: 'defense',
     type: 'range',
     placeholder: '',
@@ -45,7 +54,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 6,
+    id: 7,
     name: 'speed',
     type: 'range',
     placeholder: '',
@@ -54,7 +63,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 7,
+    id: 8,
     name: 'height',
     type: 'range',
     placeholder: '',
@@ -63,7 +72,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 8,
+    id: 9,
     name: 'weight',
     type: 'range',
     placeholder: '',
@@ -72,7 +81,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 9,
+    id: 10,
     name: 'special_attack',
     type: 'range',
     placeholder: '',
@@ -81,7 +90,7 @@ export const inputForm = [
     onChange: () => {}
   },
   {
-    id: 10,
+    id: 11,
     name: 'special_defense',
     type: 'range',
     placeholder: '',

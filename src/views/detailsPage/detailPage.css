@@ -61,9 +61,12 @@
   }
 }
 .moves {
-  text-align: center;
-  padding: 15px;
+  display: grid;
   width: 100%;
+  margin: 0;
+  justify-items: center;
+  font-size:18px;
+  padding: 10px 15px;
 }
 .moves > h4 {
   font-size: 25px;

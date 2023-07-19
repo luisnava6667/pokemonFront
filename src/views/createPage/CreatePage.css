@@ -1,5 +1,4 @@
 .createPage {
-  
   width: 100%;
   min-height: 100vh;
   align-items: center;
@@ -9,8 +8,29 @@
   display: grid;
   text-align: center;
 }
+.inputs__div {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 20px;
+  padding: 0 25px;
+}
+.type__create {
+  display: grid;
+  gap: 20px;
+  padding: 0 20px;
+}
+.type__create > h4 {
+  font-size: 24px;
+}
+.check__type {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+  gap: 45px;
+  text-transform: capitalize;
+}
 
-.div__form > form{
+.div__form > form {
   margin: 0px 40px;
   display: grid;
   font-size: 20px;
@@ -18,13 +38,13 @@
   gap: 20px;
   padding: 30px;
 }
-.div__button{
+.div__button {
   margin-top: 20px;
   padding: 20px;
   display: flex;
   gap: 50px;
 }
-.div__button > button{
+.div__button > button {
   width: 50%;
   padding: 10px;
   border-radius: 5px;
@@ -34,20 +54,20 @@
   font-weight: 700;
   cursor: pointer;
 }
-.div__button > button:nth-child(1){
-  background-color: #1DA1F2;
+.div__button > button:nth-child(1) {
+  background-color: #1da1f2;
   transition: all 0.5s ease;
 }
-.div__button > button:nth-child(1):hover{
+.div__button > button:nth-child(1):hover {
   background-color: #fff;
-  color: #1DA1F2;
+  color: #1da1f2;
 }
-.div__button > button:nth-child(2){
+.div__button > button:nth-child(2) {
   background-color: #fff;
-  color: #1DA1F2;
+  color: #1da1f2;
   transition: all 0.5s ease;
 }
-.div__button > button:nth-child(2):hover{
-  background-color: #1DA1F2;
+.div__button > button:nth-child(2):hover {
+  background-color: #1da1f2;
   color: #fff;
 }

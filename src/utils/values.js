@@ -1,4 +1,4 @@
-export  const initialFormValues = {
+export const initialFormValues = {
   name: '',
   image: '',
   hp: 0,
@@ -9,5 +9,8 @@ export  const initialFormValues = {
   special_attack: 0,
   height: 0,
   weight: 0,
-  types: []
+  types: [],
+  abilities: [],
+  games: [],
+  moves: []
 }

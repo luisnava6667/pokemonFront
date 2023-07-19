@@ -5,7 +5,10 @@ const initialState = {
   pokemons: [],
   allPokemons: [],
   detail: [],
-  types: []
+  types: [],
+  abilities: [],
+  games: [],
+  moves: []
 }
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -24,6 +27,21 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         types: action.payload
+      }
+    case 'GET_ALLABILITIES':
+      return {
+        ...state,
+        abilities: action.payload
+      }
+    case 'GET_ALLGAMES':
+      return {
+        ...state,
+        games: action.payload
+      }
+    case 'GET_ALLMOVES':
+      return {
+        ...state,
+        moves: action.payload
       }
     case 'FILTER_BY_TYPE':
       const filterType = filterPokemons(state.allPokemons, action.payload)
@@ -63,11 +81,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: orderByAttack
       }
-      case 'GET_NAMEPOKEMONS':
-        return {
-          ...state,
-          pokemons: action.payload
-        }
+    case 'GET_NAMEPOKEMONS':
+      return {
+        ...state,
+        pokemons: action.payload
+      }
     default:
       return state
   }
