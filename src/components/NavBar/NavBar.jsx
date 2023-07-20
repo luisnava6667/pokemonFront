@@ -12,6 +12,7 @@ export const NavBar = () => {
   }
 
   const { pathname } = useLocation()
+  console.log(pathname);
   return (
     pathname !== '/' && (
       <>
@@ -42,10 +43,12 @@ export const NavBar = () => {
               <FiPlusCircle size={35} />
             </div>
             <div className='navbar__links'>
-              <Link to='/pokemonCreate'>New Pokemon</Link>
-              <Link to='/types'>Type </Link>
-              <Link to='/ability'>Abilities</Link>
-              <Link to='/regions'>Regions</Link>
+              <Link to='/pokemonCreate'
+              className={`navbar__link ${pathname === '/pokemonCreate' ? 'active' : ''}`}
+              >New Pokemon</Link>
+              <Link to='/types'  className={`navbar__link ${pathname === '/types' ? 'active' : ''}`}>Type </Link>
+              <Link to='/ability'  className={`navbar__link ${pathname === '/ability' ? 'active' : ''}`}>Abilities</Link>
+              <Link to='/regions'  className={`navbar__link ${pathname === '/regions' ? 'active' : ''}`}>Regions</Link>
             </div>
           </div>
           <Menu menuOpen={menuOpen} />

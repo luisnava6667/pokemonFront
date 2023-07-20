@@ -1,4 +1,5 @@
-import { getDetail } from '../../redux/actions'
+/* eslint-disable no-unused-vars */
+
 import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
@@ -7,12 +8,10 @@ export const AbilityPage = () => {
   const { pathname } = useLocation()
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const detail = useSelector((state) => state.detail)
+  const abilities = useSelector((state) => state.ability)
   const id = pathname.split('/')[2]
-  const moves = detail.moves.join(', ')
-  console.log(moves);
+  //TODO: hacer el componente de la pagina de detalle de la habilidad
   useEffect(() => {
-    dispatch(getDetail(id))
     setTimeout(() => {
       setLoading(false)
     }, 2000)

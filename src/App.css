@@ -12,6 +12,10 @@
   font-weight: bold;
   text-transform: uppercase;
 }
+.active {
+  color: #f7522c !important;
+  cursor: not-allowed;
+}
 .bg {
   border-radius: 20px;
   padding: 10px;

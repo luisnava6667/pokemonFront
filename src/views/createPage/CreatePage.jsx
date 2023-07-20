@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -14,7 +15,7 @@ import { Type } from '../../components'
 export const CreatePage = () => {
   const dispatch = useDispatch()
   const [selectedTypes, setSelectedTypes] = useState([])
-  console.log(selectedTypes)
+// console.log(selectedTypes)
   const [selectedAbility, setSelectedAbility] = useState([])
   console.log(selectedAbility)
   const [selectedGames, setSelectedGames] = useState([])
@@ -38,6 +39,15 @@ export const CreatePage = () => {
     dispatch(getAllMoves())
     dispatch(getAllTypes())
   }, [])
+  //TODO: hacer las selecciones de los checkbox Games y Moves y refactorizar el codigo
+   const handleSelectAbility = (e) => {
+    const { name, checked } = e.target;
+    if (checked) {
+      setSelectedAbility([...selectedAbility, name]);
+    } else {
+      setSelectedAbility(selectedAbility.filter((ability) => ability !== name));
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault()
     const pokemon = {
@@ -86,10 +96,10 @@ export const CreatePage = () => {
             <h4>Abilities: </h4>
             <div className='check__type'>
               {abilities.map((ability) => (
-                <label key={ability.id}>
+                <label key={ability.id} className=''>
                   <input
                     type='checkbox'
-                    onChange={() => setSelectedAbility(ability.name)}
+                    onChange={e=>handleSelectAbility(e)}
                     name={ability.name}
                     value={ability.name}
                   />
@@ -98,7 +108,7 @@ export const CreatePage = () => {
               ))}
             </div>
           </div>
-          <div className='type__create'>
+          {/* <div className='type__create'>
             <h4>Games: </h4>
             <div className='check__type'>
               {games.map((game) => (
@@ -119,7 +129,7 @@ export const CreatePage = () => {
                 </label>
               ))}
             </div>
-          </div>
+          </div> */}
           <div className='div__button'>
             <button type='reset'>Reset</button>
             <button type='submit'>Created</button>

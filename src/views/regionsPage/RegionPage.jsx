@@ -8,16 +8,14 @@ export const RegionPage = () => {
   const { pathname } = useLocation()
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
-  const detail = useSelector((state) => state.detail)
-  const id = pathname.split('/')[2]
-  const moves = detail.moves.join(', ')
-  console.log(moves);
+  const region = useSelector((state) => state.region)
+//TODO: hacer el componente de la pagina de detalle de la region
   useEffect(() => {
-    dispatch(getDetail(id))
+    
     setTimeout(() => {
       setLoading(false)
     }, 2000)
-  }, [dispatch, id])
+  }, [dispatch])
   return (
     <>
       <div className={` detailPage`}>
@@ -26,28 +24,7 @@ export const RegionPage = () => {
         ) : (
           <>
             <div className='detailPage__div'>
-              <h2>{detail.name}</h2>
-              <div className='div__container'>
-                <img
-                  src={detail.image}
-                  alt={detail.name}
-                  className='detail__img bg'
-                />
-                <div className='div__info'>
-                  <Detail detail={detail} />
-                </div>
-              </div>
-              {/* <div className='moves bg'>
-                <h4>Moves:</h4>
-                <p>{detail.move}</p>
-              </div> */}
-              <div className='div__container moves bg'>
-                <h4>Moves:</h4>
-                <div className='moves__list' >
-                    {moves}
-                </div>
-              </div>
-            </div>
+               </div>
           </>
         )}
       </div>
