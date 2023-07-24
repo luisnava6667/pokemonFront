@@ -10,12 +10,18 @@ import {
 } from '../../redux/actions'
 import './createPage.css'
 import { Inputs } from '../../components/Form/Inputs'
-import { handleSelect, initialFormValues, inputForm } from '../../utils'
+import {
+  handleSelect,
+  initialFormValues,
+  inputForm,
+  validateForm
+} from '../../utils'
 import { Type } from '../../components'
 import { Selects } from '../../components/Form/Selects/Selects'
 export const CreatePage = () => {
   const dispatch = useDispatch()
   const [selectedTypes, setSelectedTypes] = useState([])
+  console.log(selectedTypes)
   const [selectedAbility, setSelectedAbility] = useState([])
   const [selectedGames, setSelectedGames] = useState([])
   const [selectedMoves, setSelectedMoves] = useState([])
@@ -40,6 +46,7 @@ export const CreatePage = () => {
     dispatch(getAllMoves())
     dispatch(getAllTypes())
   }, [])
+
   const handleSelectAbility = (e) => {
     setSelectedAbility((prevSelected) => handleSelect(prevSelected, e))
   }
@@ -53,10 +60,13 @@ export const CreatePage = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    const errors = {}
-    if (!values.name) {
-      errors.name = 'Name is required.'
-    }
+    const errors = validateForm(
+      values,
+      selectedTypes,
+      selectedAbility,
+      selectedGames,
+      selectedMoves
+    )
     if (Object.keys(errors).length > 0) {
       setErrors(errors)
     } else {
@@ -75,6 +85,9 @@ export const CreatePage = () => {
       setSelectedGames([])
       setSelectedMoves([])
     }
+    setTimeout(() => {
+      setErrors({})
+    }, 3000)
   }
 
   return (
@@ -99,6 +112,7 @@ export const CreatePage = () => {
           </div>
           <div className='px-20 gap-20 grid'>
             <h4 className='text-2xl'>Types: </h4>
+            {errors.types && <p className='error'>{errors.types}</p>}
             <div className='w-100 grid gr-70-1 gap-15 justify-center m-auto  capitalize'>
               {types.map((type) => (
                 <Type
@@ -113,6 +127,7 @@ export const CreatePage = () => {
           <div className='flex w-100 space-between gap-30 mt-10'>
             <div className='grid  capitalize  w-100'>
               <h4 className='text-2xl'>Abilities: </h4>
+              {errors.abilities && <p className='error'>{errors.abilities}</p>}
               <Selects
                 options={abilities.map((ability) => ability.name)}
                 handleSelect={handleSelectAbility}
@@ -120,6 +135,7 @@ export const CreatePage = () => {
             </div>
             <div className='grid capitalize w-100'>
               <h4 className='text-2xl'>Games: </h4>
+              {errors.games && <p className='error'>{errors.games}</p>}
               <Selects
                 options={games.map((game) => game.name)}
                 handleSelect={handleSelectGames}
@@ -127,6 +143,7 @@ export const CreatePage = () => {
             </div>
             <div className='grid capitalize w-100'>
               <h4 className='text-2xl'>Moves: </h4>
+              {errors.moves && <p className='error'>{errors.moves}</p>}
               <Selects
                 options={moves.map((move) => move.name)}
                 handleSelect={handleSelectMoves}

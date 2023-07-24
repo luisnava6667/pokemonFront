@@ -369,12 +369,14 @@ input:checked + .label__check > img {
 .w-90 {
   width: 90%;
 }
-
 .w-100 {
   width: 100%;
 }
 .w-120 {
   width: 120px;
+}
+.h-101{
+  height: 100px;
 }
 .h-30 {
   height: 30px;
@@ -572,4 +574,10 @@ input:checked + .label__check > img {
 }
 .resetButton:hover {
   background-color: #651C15;
+}
+.error{
+  color: red;
+  font-size: 18px;
+  font-weight: 900;
+  text-shadow: none;
 }

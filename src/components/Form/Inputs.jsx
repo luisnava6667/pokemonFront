@@ -7,11 +7,13 @@ export const Inputs = ({
   value,
   handleChange
 }) => {
+  
   return (
     <>
-      <div className='grid h-90'>
+      <div className='grid h-101'>
         <label htmlFor={name}>
           {label}: {type === 'range' && <span>{value}</span>}
+        {error && <p className='error h-10 text-lg'>{error}</p>}
         </label>
         <input
           id={name}
@@ -21,7 +23,6 @@ export const Inputs = ({
           value={value}
           onChange={handleChange}
         />
-      {error && <p className='error'>{error}</p>}
       </div>
     </>
   )
