@@ -7,6 +7,8 @@ import {
   filterPokemonsByType,
   getAllTypes,
   orderById,
+  orderByAttack,
+  orderByDefense,
   orderByName
 } from '../../redux/actions'
 import { Select } from './Select/Select'
@@ -52,10 +54,22 @@ export const Filters = ({ setCurrentPage }) => {
     setCurrentPage(1)
     setOrden(`Ordenado ${e.target.value}`)
   }
+  const handleFilterByAttack = (e) => {
+    e.preventDefault()
+    dispatch(orderByAttack(e.target.value))
+    setCurrentPage(1)
+    setOrden(`Ordenado ${e.target.value}`)
+  }
+  const handleFilterByDefense = (e) => {
+    e.preventDefault()
+    dispatch(orderByDefense(e.target.value))
+    setCurrentPage(1)
+    setOrden(`Ordenado ${e.target.value}`)
+  }
 
   return (
-    <div className='filters bg'>
-      <div className='filter'>
+    <div className='grid w-90 m-auto  bg'>
+      <div className='align-center flex w-100 mb-10 gap-10 justify-content'>
         <h2>Filters</h2>
         {visible ? (
           <MdKeyboardArrowUp
@@ -72,8 +86,8 @@ export const Filters = ({ setCurrentPage }) => {
         )}
       </div>
       {visible ? (
-        <div className='filter__div'>
-          <div className='div__filter'>
+        <div className='w-100'>
+          <div className='grid uppercase gr-70-1 gap-15 justify-center m-auto'>
             {types.map((type) => (
               <Type
                 key={type.id}
@@ -92,8 +106,11 @@ export const Filters = ({ setCurrentPage }) => {
               value2='api'
               handler={handleFilterCreate}
             />
-            <Select legend={'Order by Attack'} handler={handleFilterId} />
-            <Select legend={'Order by Defense'} handler={handleFilterId} />
+            <Select legend={'Order by Attack'} handler={handleFilterByAttack} />
+            <Select
+              legend={'Order by Defense'}
+              handler={handleFilterByDefense}
+            />
             {/* <button className='' onClick={clearFilters}>
               Clean Filters
             </button> */}

@@ -1,6 +1,5 @@
 import { getTypeColor } from '../../helpers'
 import { TypeDescription } from './TypesDescription/TypeDescription '
-import './detailTypes.css'
 export const DetailTypes = ({ type }) => {
   const {
     name,
@@ -13,8 +12,13 @@ export const DetailTypes = ({ type }) => {
   } = type
 
   return (
-    <div className='detail__type bg'>
-      <h3 className={`type__title ${getTypeColor(name)}`}>{name}</h3>
+    <div className='bg capitalize grid gap-10'>
+      <h3
+        className={`br-10 h-30 text-align bold text-2xl grid justify-center align-center ${getTypeColor(
+          name
+        )}`}>
+        {name}
+      </h3>
       <TypeDescription title='Weak to:' types={double_damage_from} />
       <TypeDescription title='Strong to:' types={double_damage_to} />
       <TypeDescription title='Half damage from:' types={half_damage_from} />

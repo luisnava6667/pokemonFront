@@ -1,8 +1,9 @@
-import axios from 'axios'
+
+import { pokeApi } from '../../config/pokeApi'
 
 export function getAllPokemons() {
   return async function (dispatch) {
-    const { data } = await axios.get('http://localhost:3001/api/pokemons')
+    const { data } = await pokeApi.get('/pokemons')
     return dispatch({
       type: 'GET_ALLPOKEMONS',
       payload: data
@@ -11,7 +12,7 @@ export function getAllPokemons() {
 }
 export function getAllTypes() {
   return async function (dispatch) {
-    const { data } = await axios.get('http://localhost:3001/api/types')
+    const { data } = await pokeApi.get('/types')
     return dispatch({
       type: 'GET_ALLTYPES',
       payload: data
@@ -20,8 +21,8 @@ export function getAllTypes() {
 }
 export function getAllAbilities() {
   return async function (dispatch) {
-    const { data } = await axios.get('http://localhost:3001/api/ability')
-    
+    const { data } = await pokeApi.get('/ability')
+
     return dispatch({
       type: 'GET_ALLABILITIES',
       payload: data
@@ -30,8 +31,7 @@ export function getAllAbilities() {
 }
 export function getAllGames() {
   return async function (dispatch) {
-    const { data } = await axios.get('http://localhost:3001/api/games')
-    
+    const { data } = await pokeApi.get('/games')
     return dispatch({
       type: 'GET_ALLGAMES',
       payload: data
@@ -40,7 +40,7 @@ export function getAllGames() {
 }
 export function getAllMoves() {
   return async function (dispatch) {
-    const { data } = await axios.get('http://localhost:3001/api/moves')
+    const { data } = await pokeApi.get('/moves')
     console.log(data)
     return dispatch({
       type: 'GET_ALLMOVES',
@@ -50,7 +50,7 @@ export function getAllMoves() {
 }
 export function getDetail(id) {
   return async function (dispatch) {
-    const { data } = await axios.get(`http://localhost:3001/api/pokemons/${id}`)
+    const { data } = await pokeApi.get(`/pokemons/${id}`)
     return dispatch({
       type: 'GET_DETAIL',
       payload: data
@@ -59,10 +59,7 @@ export function getDetail(id) {
 }
 export function postPokemon(payload) {
   return async function () {
-    const { data } = await axios.post(
-      'http://localhost:3001/api/pokemons',
-      payload
-    )
+    const { data } = await pokeApi.post('/pokemons', payload)
     return data
   }
 }
@@ -90,26 +87,21 @@ export function orderById(payload) {
     payload
   }
 }
-
-export function createPokemons(payload) {
-  return async function () {
-    const { data } = await axios.post(
-      'http://localhost:3001/api/pokemons',
-      payload
-    )
-    return data
-  }
-}
 export function orderByAttack(payload) {
   return {
     type: 'ORDER_BY_ATTACK',
     payload
   }
 }
+export function orderByDefense(payload) {
+  return {
+    type: 'ORDER_BY_DEFENSE',
+    payload
+  }
+}
 export function getNamePokemons(name) {
   return async function (dispatch) {
-    const { data } = await axios.get(
-      `http://localhost:3001/api/pokemons?name=${name}`
+    const { data } = await pokeApi.get(`/pokemons?name=${name}`
     )
     return dispatch({
       type: 'GET_NAMEPOKEMONS',

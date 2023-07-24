@@ -81,6 +81,16 @@ function rootReducer(state = initialState, action) {
         ...state,
         pokemons: orderByAttack
       }
+    case 'ORDER_BY_DEFENSE':
+      const orderByDefense = sortPokemons(
+        state.pokemons,
+        action.payload,
+        'defense'
+      )
+      return {
+        ...state,
+        pokemons: orderByDefense
+      }
     case 'GET_NAMEPOKEMONS':
       return {
         ...state,

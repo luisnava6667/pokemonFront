@@ -1,17 +1,6 @@
 .filters {
   display: grid;
   width: 90%;
-  padding: 15px 35px;
-  margin: 10px auto;
-}
-.filter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  color: #fff;
-  margin-bottom: 10px;
 }
 
 .icon {
@@ -23,16 +12,6 @@
   color: #f7522c;
 }
 
-.filter__div {
-  width: 100%;
-}
-.div__filter {
-  display: grid;
-  justify-items: center;
-  grid-template-columns: repeat(-fill, minmax(65px, 1fr));
-  gap: 15px;
-  text-transform: uppercase;
-}
 .selects {
   display: grid;
 }

@@ -32,13 +32,3 @@ dd {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
-img {
-  max-width: 100%;
-  height: 200px;
-}
-h2{
-   justify-content: center;
-  text-align: center;
-  font-size: 40px;
-  color: white;
-}

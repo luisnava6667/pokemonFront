@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  createPokemons,
+  postPokemon,
   getAllAbilities,
   getAllGames,
   getAllMoves,
@@ -10,16 +10,17 @@ import {
 } from '../../redux/actions'
 import './createPage.css'
 import { Inputs } from '../../components/Form/Inputs'
-import { initialFormValues, inputForm } from '../../utils'
+import { handleSelect, initialFormValues, inputForm } from '../../utils'
 import { Type } from '../../components'
+import { Selects } from '../../components/Form/Selects/Selects'
 export const CreatePage = () => {
   const dispatch = useDispatch()
   const [selectedTypes, setSelectedTypes] = useState([])
-// console.log(selectedTypes)
   const [selectedAbility, setSelectedAbility] = useState([])
-  console.log(selectedAbility)
   const [selectedGames, setSelectedGames] = useState([])
   const [selectedMoves, setSelectedMoves] = useState([])
+  const [errors, setErrors] = useState({})
+  console.log(errors)
   const [values, setValues] = useState(initialFormValues)
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -39,35 +40,51 @@ export const CreatePage = () => {
     dispatch(getAllMoves())
     dispatch(getAllTypes())
   }, [])
-  //TODO: hacer las selecciones de los checkbox Games y Moves y refactorizar el codigo
-   const handleSelectAbility = (e) => {
-    const { name, checked } = e.target;
-    if (checked) {
-      setSelectedAbility([...selectedAbility, name]);
-    } else {
-      setSelectedAbility(selectedAbility.filter((ability) => ability !== name));
-    }
-  };
+  const handleSelectAbility = (e) => {
+    setSelectedAbility((prevSelected) => handleSelect(prevSelected, e))
+  }
+
+  const handleSelectGames = (e) => {
+    setSelectedGames((prevSelected) => handleSelect(prevSelected, e))
+  }
+
+  const handleSelectMoves = (e) => {
+    setSelectedMoves((prevSelected) => handleSelect(prevSelected, e))
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
-    const pokemon = {
-      ...values,
-      types: selectedTypes,
-      abilities: selectedAbility,
-      games: selectedGames,
-      moves: selectedMoves
+    const errors = {}
+    if (!values.name) {
+      errors.name = 'Name is required.'
     }
-    console.log(pokemon)
-    // dispatch(createPokemons(pokemon))
-    setValues(initialFormValues)
+    if (Object.keys(errors).length > 0) {
+      setErrors(errors)
+    } else {
+      const pokemon = {
+        ...values,
+        types: selectedTypes,
+        abilities: selectedAbility,
+        games: selectedGames,
+        moves: selectedMoves
+      }
+      console.log(pokemon)
+      dispatch(postPokemon(pokemon))
+      setValues(initialFormValues)
+      setSelectedTypes([])
+      setSelectedAbility([])
+      setSelectedGames([])
+      setSelectedMoves([])
+    }
   }
 
   return (
-    <div className='createPage'>
-      <div className='div__form'>
-        <h2>Create Your Pokemon</h2>
-        <form onSubmit={handleSubmit} className='bg'>
-          <div className='inputs__div'>
+    <div className='page'>
+      <div className=' grid text-center'>
+        <h2 className='title'>Create Your Pokemon</h2>
+        <form
+          onSubmit={handleSubmit}
+          className='bg gap-20 pad-30 mar-x-40 text-2xl'>
+          <div className='px-25 grid gr-450-1 gap-20'>
             {inputForm.map((input) => (
               <Inputs
                 key={input.id}
@@ -76,12 +93,13 @@ export const CreatePage = () => {
                 name={input.name}
                 value={values[input.name]}
                 handleChange={handleChange}
+                error={errors[input.name]}
               />
             ))}
           </div>
-          <div className='type__create'>
-            <h4>Types: </h4>
-            <div className='check__type'>
+          <div className='px-20 gap-20 grid'>
+            <h4 className='text-2xl'>Types: </h4>
+            <div className='w-100 grid gr-70-1 gap-15 justify-center m-auto  capitalize'>
               {types.map((type) => (
                 <Type
                   key={type.id}
@@ -92,47 +110,40 @@ export const CreatePage = () => {
               ))}
             </div>
           </div>
-          <div className='type__create'>
-            <h4>Abilities: </h4>
-            <div className='check__type'>
-              {abilities.map((ability) => (
-                <label key={ability.id} className=''>
-                  <input
-                    type='checkbox'
-                    onChange={e=>handleSelectAbility(e)}
-                    name={ability.name}
-                    value={ability.name}
-                  />
-                  {ability.name}
-                </label>
-              ))}
+          <div className='flex w-100 space-between gap-30 mt-10'>
+            <div className='grid  capitalize  w-100'>
+              <h4 className='text-2xl'>Abilities: </h4>
+              <Selects
+                options={abilities.map((ability) => ability.name)}
+                handleSelect={handleSelectAbility}
+              />
+            </div>
+            <div className='grid capitalize w-100'>
+              <h4 className='text-2xl'>Games: </h4>
+              <Selects
+                options={games.map((game) => game.name)}
+                handleSelect={handleSelectGames}
+              />
+            </div>
+            <div className='grid capitalize w-100'>
+              <h4 className='text-2xl'>Moves: </h4>
+              <Selects
+                options={moves.map((move) => move.name)}
+                handleSelect={handleSelectMoves}
+              />
             </div>
           </div>
-          {/* <div className='type__create'>
-            <h4>Games: </h4>
-            <div className='check__type'>
-              {games.map((game) => (
-                <label key={game.id}>
-                  <input type='checkbox' name={game.name} value={game.name} />
-                  {game.name}
-                </label>
-              ))}
-            </div>
-          </div>
-          <div className='type__create'>
-            <h4>Moves: </h4>
-            <div className='check__type'>
-              {moves.map((move) => (
-                <label key={move.id}>
-                  <input type='checkbox' name={move.name} value={move.name} />
-                  {move.name}
-                </label>
-              ))}
-            </div>
-          </div> */}
-          <div className='div__button'>
-            <button type='reset'>Reset</button>
-            <button type='submit'>Created</button>
+          <div className='mt-20 flex gap-50 pad-20'>
+            <button
+              type='reset'
+              className='b-none pad-10 br-5 w-50 resetButton bold pointer text-xl'>
+              Reset
+            </button>
+            <button
+              type='submit'
+              className='b-none pad-10 br-5 w-50 createButton bold pointer text-xl'>
+              Created
+            </button>
           </div>
         </form>
       </div>

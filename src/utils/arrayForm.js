@@ -19,7 +19,7 @@ export const inputForm = [
   },
   {
     id: 3,
-    name: 'description',
+    name: 'characteristic',
     type: 'text',
     placeholder: 'Please enter description the Pokemon',
     label: 'Pokemon Description',

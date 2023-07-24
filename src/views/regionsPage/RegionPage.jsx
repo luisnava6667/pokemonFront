@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Detail, Loader } from '../../components'
-import './detailPage.css'
 export const RegionPage = () => {
   const { pathname } = useLocation()
   const dispatch = useDispatch()

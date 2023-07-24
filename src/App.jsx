@@ -16,7 +16,9 @@ function App() {
           <Route path='/pokemon/:id' exact element={<DetailPage />} />
           <Route path='/pokemonCreate' element={<CreatePage />} />
           <Route path='/types' element={<TypePage />} />
-          <Route path='/avility' element={<AbilityPage/>} />
+          <Route path='/ability' element={<AbilityPage />} />
+          <Route path='/regions' element={<AbilityPage />} />
+          <Route path='/regions/:id' element={<AbilityPage />} />
         </Routes>
         {/* <Footer /> */}
       </div>

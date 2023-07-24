@@ -5,8 +5,11 @@ import { handleCheckboxChange } from '../../utils'
 export const Type = ({ name, selectedTypes, setSelectedTypes }) => {
   const [imageOpacity, setImageOpacity] = useState(1)
   return (
-    <div className='check__types'>
-      <label className={`label__check ${getTypeColor(name)}`}>
+    <div className='grid justify-center '>
+      <label
+        className={`h-40 w-40 br-50 justify-content grid align-center gap-10 br ${getTypeColor(
+          name
+        )}`}>
         <input
           className='inputsCheck'
           type='checkbox'
@@ -26,6 +29,7 @@ export const Type = ({ name, selectedTypes, setSelectedTypes }) => {
           src={`./type/${name}.svg`}
           alt={name}
           style={{ opacity: imageOpacity }}
+          className='h-30 w-30 pointer'
         />
       </label>
       <label htmlFor={name}>{name}</label>

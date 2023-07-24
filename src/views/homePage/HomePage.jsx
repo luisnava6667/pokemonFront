@@ -1,11 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { Loader, Cards, Footer, NavBar, Filters } from '../../components'
-import './homePage.css'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllPokemons, getAllTypes } from '../../redux/actions'
 import { Paginado } from '../../components/Paginado/Paginado'
-
 export const HomePage = () => {
   const dispatch = useDispatch()
   const [loading, setLoading] = useState(true)
@@ -29,19 +27,21 @@ export const HomePage = () => {
     }, 2000)
   }, [dispatch])
   return (
-    <div className='homePage'>
+    <div className='page'>
       {loading ? (
         <Loader />
       ) : (
         <div>
-          <h2>Pokedex</h2>
+          <h2 className='title'>Pokedex</h2>
           <Filters setCurrentPage={setCurrentPage} />
           <Paginado
             charactersPerPage={pokemonsPerPage}
             allPokemons={allPokemons.length}
             paginado={paginado}
           />
-          <div className='homePage__cards'>
+          <div className=' grid wrap pad-x-60 mb-20 gap-20
+            md:cards lg:cards xl:cards xl:cards 2xl:cards 
+          '>
             {currentPokemons?.map((pokemon, i) => (
               <Cards key={i} pokemon={pokemon} />
             ))}

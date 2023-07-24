@@ -1,13 +1,11 @@
 import { useSelector } from 'react-redux'
 import { DetailTypes } from '../../components'
-import './type.css'
 export const TypePage = () => {
   const types = useSelector((state) => state.types)
-  console.log(types)
   return (
-    <div className='typePage'>
-      <h3>Types</h3>
-      <div className='div__types'>
+    <div className='grid pad-20'>
+      <h3 className='title'>Types</h3>
+      <div className='gap-20 grid div__types'>
         {types.map((type) => (
           <DetailTypes key={type.id} type={type} />
         ))}
